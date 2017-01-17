@@ -7,10 +7,14 @@ app.get('/', function (req, res) {
 });
 
 app.get('/convert/:currency/:value', function (req, res) {
-    //hint switch on req.params.currency
-  console.log(req.params.currency);
-  console.log(req.params.value*70);
-  res.send({value: req.params.value/68.1});
+    var curr=req.params.currency;
+    var value=req.params.value;
+    var result=0;
+    if(curr=="INR")
+    {
+      result= value/68.10;
+    }
+    res.send({value: result});
 });
 
 app.listen(3000, function () {
